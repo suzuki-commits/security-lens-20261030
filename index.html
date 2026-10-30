@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>セキュリティ対策診断 人材派遣業 A社</title>
+<style>
+:root{--ink:#221714;--sub:#4f4944;--line:#e4e0dc;--bg:#f7f6f4;--card:#fff;--blue:#0068B6;--high:#c62f12;--mid:#b26a00;--low:#2f7d4f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 "Noto Sans JP","Yu Gothic UI","Meiryo",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:32px 20px 56px}header{border-bottom:3px solid var(--blue);padding-bottom:16px;margin-bottom:24px}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--blue);font-weight:700}h1{font-size:28px;margin:6px 0 4px;line-height:1.4}
+.meta{color:var(--sub);font-size:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 18px}
+h2{font-size:21px;margin:0 0 10px}.lvl{display:inline-block;font-weight:700;padding:2px 12px;border-radius:999px;color:#fff;margin-left:8px;font-size:15px}
+.lvl.high,.pill.high{background:var(--high)}.lvl.mid,.pill.mid{background:var(--mid)}.lvl.low,.pill.low{background:var(--low)}
+.dom{border-top:1px solid var(--line);padding:16px 0}.dom:first-of-type{border-top:0;padding-top:4px}.dh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.no{font:700 15px/1 Consolas,monospace;color:var(--blue)}h3{font-size:19px;margin:0;flex:1}.pill{color:#fff;font-size:15px;font-weight:700;padding:2px 10px;border-radius:999px}
+.why{color:var(--sub);margin:8px 0}ol,ul{margin:6px 0 0;padding-left:1.4em}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rm{background:var(--bg);border-radius:8px;padding:12px 14px}h4{margin:0 0 4px;font-size:17px;color:var(--blue)}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note{font-size:16px;color:var(--sub)}footer{font-size:14px;color:var(--sub);margin-top:24px}
+@media(max-width:720px){.grid,.two{grid-template-columns:1fr}h1{font-size:23px}}
+</style></head><body><div class="wrap">
+<header><div class="eyebrow">COMIX / SECURITY LENS</div><h1>セキュリティ対策診断：人材派遣業 A社</h1>
+<div class="meta">対象URL: https://www.██████.com/（伏せ字）<br>ページタイトル: 株式会社██████｜人材派遣会社（社名・所在地は伏せ字）<br>解析日時: 2026-10-30 14:16</div></header>
+<div class="card"><h2>経営向け要約<span class="lvl mid">優先</span></h2><p>A社（人材派遣業）の公開サイトを確認したところ、HSTSやCSPなど主要なセキュリティ関連ヘッダーが外部から一つも観測できず、外部スクリプトの読み込みが3件確認されました。派遣社員やクライアント企業の個人情報を取り扱う事業特性を踏まえると、データ管理と委託先・連携サービスの統制状況の確認を優先すべき段階にあります。公開情報だけでは内部の認証基盤やクラウド設定までは分からないため、まずは社内の棚卸しから着手することを推奨します。</p></div>
+<div class="card"><h2>5領域の推奨対策</h2>
+<section class="dom"><div class="dh"><span class="no">01</span><h3>ID・なりすまし</h3><span class="pill mid">優先度 中</span></div>
+<p class="why">公開ページにはログイン画面やパスワード入力フォームは観測されず、公開経路からの直接的な認証突破の手がかりはありません。一方で人材派遣業は社内の勤怠・給与システムや派遣スタッフ向けポータルなど、公開ページの外側に認証基盤を持つことが一般的で、今回の観測だけでは管理者権限や多要素認証の適用状況は確認できません。</p><ol><li>全社で利用している業務システム（勤怠・給与・派遣管理等）の管理者アカウント一覧を棚卸しし、多要素認証の適用状況を確認する</li><li>退職者・契約終了スタッフのアカウントが期限内に無効化されているかを確認する</li><li>外部連携先（提携先企業・資本参画先等）とのアカウント共有や共通パスワードの使用がないかを点検する</li></ol></section>
+<section class="dom"><div class="dh"><span class="no">02</span><h3>公開資産・脆弱性</h3><span class="pill high">優先度 高</span></div>
+<p class="why">今回の観測では、HSTS・CSP・X-Frame-Options・X-Content-Type-Options・Permissions-Policy・Referrer-Policyの6種類の代表的なセキュリティ関連ヘッダーが一つも確認できませんでした。外部スクリプトも3件読み込まれており、公開サイトの基本的な防御設定が手薄な可能性があるため、5領域の中では優先度を高めに置くべき状況です。</p><ol><li>Webサイトを管理している制作会社・ホスティング事業者に、セキュリティ関連HTTPヘッダーの設定状況を確認し、未設定分の追加を依頼する</li><li>サイトで読み込んでいる外部スクリプト（解析タグ・チャット機能等）の提供元と必要性を一覧化し、不要なものを削除する</li><li>CMSやサーバーソフトウェアのバージョンと更新状況を委託先に確認する</li></ol></section>
+<section class="dom"><div class="dh"><span class="no">03</span><h3>SaaS・委託先・連携アプリ</h3><span class="pill mid">優先度 中</span></div>
+<p class="why">新着情報に他社との業務提携や外部企業による資本参画など、複数の外部企業との連携実績が公開されています。外部スクリプトも3件確認されており、提携・連携先が増えるほど連携アプリ経由のリスクも増える傾向にあるため、委託先管理の確認を優先領域としています。</p><ol><li>業務提携・資本参画先および委託先とのデータ連携範囲（共有する個人情報の種類・システム連携の有無）を一覧化する</li><li>連携しているSaaS・外部ツールのアカウント管理者と権限範囲を確認する</li><li>委託先・提携先との契約に、個人情報の取り扱いに関する条項が含まれているかを確認する</li></ol></section>
+<section class="dom"><div class="dh"><span class="no">04</span><h3>データ・生成AI・設定ミス</h3><span class="pill high">優先度 高</span></div>
+<p class="why">人材派遣・人材紹介事業は、派遣スタッフやクライアント企業の氏名・経歴・場合によっては機微な個人情報を日常的に取り扱う業種特性があります。お問い合わせフォームや採用関連ページも公開されており、収集した個人情報の保管・アクセス権限・生成AIツールへの入力ルールの整備状況を優先的に確認すべきと判断しました。</p><ol><li>派遣スタッフ・応募者の個人情報（履歴書・経歴書等）の保管場所とアクセス権限者を一覧化する</li><li>社内で生成AIツールを利用する際に、個人情報や未公開の提携情報を入力しないルールが周知されているかを確認する</li><li>問い合わせフォーム経由で受け取る個人情報の保管期間と削除ルールを定める</li></ol></section>
+<section class="dom"><div class="dh"><span class="no">05</span><h3>検知・初動・復旧</h3><span class="pill mid">優先度 中</span></div>
+<p class="why">公開ページの観測だけでは、インシデント発生時の検知体制や連絡フローの有無は確認できません。ただしセキュリティ関連ヘッダーが全く観測できなかった点は、基本的な防御設定の管理体制自体が手薄である可能性を示す間接的な材料であり、検知・初動体制の確認も合わせて行うことを推奨します。</p><ol><li>Webサイトやメールの異常（改ざん・不審なアクセス等）を検知した際の社内連絡フローと一次対応の担当者を明確にする</li><li>委託先（ホスティング事業者・制作会社）との障害時対応窓口と対応時間を確認する</li><li>個人情報の漏えいが疑われた場合の報告・公表手順（社内規程）の有無を確認する</li></ol></section></div>
+<div class="card"><h2>実行ロードマップ</h2><div class="grid"><div class="rm"><h4>0〜7日</h4><ul><li>セキュリティ関連ヘッダーの設定状況をホスティング事業者・制作会社に確認する</li><li>派遣スタッフ・応募者の個人情報の保管場所とアクセス権限者を洗い出す</li><li>インシデント発生時の社内連絡フローと一次対応の担当者を決めておく</li></ul></div><div class="rm"><h4>30日以内</h4><ul><li>管理者アカウントの多要素認証適用状況を全業務システムで棚卸しする</li><li>外部スクリプト・連携SaaSの一覧化と不要なものの削除を行う</li><li>生成AIツール利用時の個人情報取り扱いルールを社内に周知する</li></ul></div><div class="rm"><h4>90日以内</h4><ul><li>委託先・提携先との契約における個人情報取り扱い条項の点検と必要に応じた見直しを行う</li><li>退職者・契約終了者のアカウント無効化プロセスを定例運用として定着させる</li><li>個人情報漏えい時の報告・公表手順を社内規程として整備・訓練する</li></ul></div></div></div>
+<div class="card"><h2>確認したい質問</h2><ul><li>派遣スタッフや応募者の個人情報は、どのシステムでどなたが管理されていますか</li><li>業務提携先・資本参画先とのシステム連携やデータ共有は現在どの範囲まで行われていますか</li><li>Webサイトの運用・セキュリティ設定は自社内か外部のホスティング事業者・制作会社のどちらが担当されていますか</li><li>社内で生成AIツールを利用する際の個人情報取り扱いに関するルールは整備されていますか</li><li>インシデント発生時（情報漏えい疑い等）の社内連絡フローや担当者は決まっていますか</li></ul></div>
+<div class="card two"><div><h2>公開情報から観測できた事項</h2><ul><li>公開ページタイトル: 株式会社██████｜人材派遣会社（社名・所在地は伏せ字）</li><li>HTTPSで公開ページへ接続</li><li>公開フォーム: 0件</li><li>外部スクリプト参照: 3件</li><li>観測できたセキュリティ関連ヘッダー: なし</li></ul></div>
+<div><h2>観測できない事項・前提</h2><ul class="note"><li>公開HTMLとHTTPレスポンスヘッダーだけを限定的に参照しています。認証後の画面、端末、メール、クラウド設定、委託先や実際の権限設計は評価していません。</li><li>ヘッダーの有無や公開ページの記載だけで、脆弱性・安全性・法令遵守を断定するものではありません（脆弱性診断・侵入テストではありません）。</li><li>出力は対策の優先順位を整理する初期診断です。契約・監査・法務判断の代替にはなりません。</li></ul></div></div>
+<footer>本レポートは公開ページの限定的な情報と過去の漏洩原因類型（5領域）をもとに、優先すべき対策を整理したものです。脆弱性の有無・安全性を断定するものではありません。株式会社コミクス</footer>
+</div></body></html>
